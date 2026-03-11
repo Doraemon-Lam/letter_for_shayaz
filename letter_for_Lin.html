@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>letter for MY LOVE Lin</title>
+  <style>
+    :root{
+      /* background */
+      --bg1:#0b1020;
+      --bg2:#141a33;
+
+      /* wood-paper palette (soft, natural) */
+      --paper:#fbf5e8;      /* warm ivory */
+      --paper2:#f3ead8;     /* slightly deeper */
+      --woodEdge:#e5d6bc;   /* frame tint */
+      --ink:#2b2a27;        /* softer than pure black */
+      --muted:#6b655c;
+
+      /* accents (very restrained) */
+      --marginLine: rgba(160, 120, 80, .38);
+      --pencil: rgba(90, 80, 70, .22);
+
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 22px;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --serif: ui-serif, "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:
+        radial-gradient(900px 600px at 20% 15%, rgba(139,214,255,.16), transparent 55%),
+        radial-gradient(900px 600px at 85% 25%, rgba(255,180,214,.12), transparent 55%),
+        radial-gradient(1200px 800px at 50% 85%, rgba(110,140,255,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+      color:#e9ecff;
+    }
+
+    /* subtle grain on background */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      opacity:.20;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding:30px 16px;
+    }
+
+    .frame{
+      width:min(920px, 100%);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(15,22,48,.55);
+      backdrop-filter: blur(10px);
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 18px;
+      border-bottom:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(90deg, rgba(139,214,255,.10), rgba(255,180,214,.08));
+    }
+
+    .dots{ display:flex; gap:8px; }
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      border:1px solid rgba(255,255,255,.18);
+      background:#ffffff22;
+    }
+    .dot:nth-child(1){ background:rgba(255,107,107,.32); }
+    .dot:nth-child(2){ background:rgba(255,211,107,.28); }
+    .dot:nth-child(3){ background:rgba(107,255,173,.22); }
+
+    .title{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:rgba(233,236,255,.80);
+      user-select:none;
+    }
+
+    /* ===== Paper ===== */
+    .paperWrap{
+      padding:24px 18px 18px;
+    }
+
+    .meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+      padding:0 4px;
+    }
+
+    .dateLine{
+      font-size:13px;
+      color:rgba(233,236,255,.72);
+      letter-spacing:.02em;
+    }
+
+    .paper{
+      position:relative;
+      border-radius:18px;
+      overflow:hidden;
+      background:linear-gradient(180deg, var(--paper), var(--paper2));
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.70);
+    }
+
+    /* wood-ish undertone + paper fibers */
+    .paper::before{
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
+      opacity:.55;
+      background-image:
+        /* soft wood grain waves */
+        repeating-linear-gradient(
+          15deg,
+          rgba(170,140,95,.08) 0px,
+          rgba(170,140,95,.08) 2px,
+          rgba(255,255,255,0) 10px,
+          rgba(255,255,255,0) 22px
+        ),
+        repeating-linear-gradient(
+          -12deg,
+          rgba(120,95,70,.05) 0px,
+          rgba(120,95,70,.05) 1px,
+          rgba(255,255,255,0) 9px,
+          rgba(255,255,255,0) 20px
+        ),
+        /* paper fiber specks */
+        radial-gradient(1px 1px at 12% 20%, rgba(90,70,45,.16), transparent 60%),
+        radial-gradient(1px 1px at 32% 70%, rgba(90,70,45,.14), transparent 60%),
+        radial-gradient(1px 1px at 64% 35%, rgba(90,70,45,.12), transparent 60%),
+        radial-gradient(1px 1px at 84% 55%, rgba(90,70,45,.12), transparent 60%),
+        /* faint noise */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      mix-blend-mode:multiply;
+      filter:saturate(.95);
+    }
+
+    /* gentle ruled lines */
+    .paper::after{
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
+      opacity:.12;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(43,42,39,.18),
+          rgba(43,42,39,.18) 1px,
+          transparent 1px,
+          transparent 34px
+        );
+    }
+
+    /* left margin with subtle pencil doodles */
+    .margin{
+      position:absolute;
+      top:0; left:0;
+      width:108px;
+      height:100%;
+      pointer-events:none;
+      opacity:.95;
+    }
+
+    .margin::before{
+      content:"";
+      position:absolute;
+      top:18px; bottom:18px;
+      left:84px;
+      width:2px;
+      background:linear-gradient(to bottom, var(--marginLine), rgba(160,120,80,.16));
+      border-radius:99px;
+      filter: blur(.2px);
+    }
+
+    .scribbles{
+      position:absolute;
+      top:18px; bottom:18px;
+      left:14px; right:26px;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='900' viewBox='0 0 120 900'%3E%3Cpath d='M22 60c10-10 30-12 42-2 10 8 8 22-6 26-16 5-44-6-36-24z' fill='none' stroke='rgba(90,80,70,.22)' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M26 150c10-8 24-10 38-6 12 4 18 16 6 22-18 9-44 2-44-16z' fill='none' stroke='rgba(90,80,70,.18)' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M18 250c18-14 54-12 62 6 7 16-18 26-34 22-16-4-38-14-28-28z' fill='none' stroke='rgba(160,120,80,.18)' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M24 370c18-10 44-8 52 10 8 18-20 26-36 20-16-6-30-18-16-30z' fill='none' stroke='rgba(90,80,70,.16)' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M22 520c14-12 40-14 52-2 10 10 2 26-14 26-18 0-46-10-38-24z' fill='none' stroke='rgba(90,80,70,.16)' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M30 660c10-10 34-14 44-2 10 12-4 26-20 26-18 0-34-10-24-24z' fill='none' stroke='rgba(160,120,80,.16)' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M20 810c18-12 48-12 58 6 8 14-16 28-34 24-18-4-40-16-24-30z' fill='none' stroke='rgba(90,80,70,.14)' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat:repeat-y;
+      background-size:120px 900px;
+      filter: blur(.15px);
+      opacity:.85;
+    }
+
+    .content{
+      position:relative;
+      padding:28px 34px 24px 128px; /* leave room for margin */
+      font-family:var(--serif);
+      font-size:17px;
+      line-height:1.95;
+      color:var(--ink);
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
+
+    .signature{
+      margin-top:18px;
+      padding-top:6px;
+      font-family:var(--sans);
+      color:var(--ink);
+    }
+
+    .signature .yours{
+      display:block;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+
+    .signature .name{
+      font-size:18px;
+      letter-spacing:.02em;
+      display:inline-block;
+    }
+
+    .cursor{
+      display:inline-block;
+      width:.6ch;
+      border-left:2px solid rgba(43,42,39,.55);
+      margin-left:.08em;
+      transform:translateY(2px);
+      animation: blink .9s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:14px 18px 18px;
+      color:rgba(233,236,255,.72);
+      font-size:12px;
+    }
+
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      appearance:none;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(10,16,38,.38);
+      color:#e9ecff;
+      padding:10px 14px;
+      border-radius:12px;
+      font-size:12px;
+      cursor:pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+    }
+    button:hover{ background:rgba(16,26,58,.45); border-color:rgba(255,255,255,.22); }
+    button:active{ transform: translateY(1px); }
+    button.primary{
+      border-color:rgba(139,214,255,.35);
+      background:rgba(139,214,255,.12);
+    }
+    button.primary:hover{ background:rgba(139,214,255,.16); }
+
+    .progress{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-family:var(--mono);
+      font-size:12px;
+      min-width:220px;
+      justify-content:flex-end;
+    }
+    .bar{
+      width:180px; height:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      overflow:hidden;
+    }
+    .bar > i{
+      display:block;
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg, rgba(139,214,255,.85), rgba(255,180,214,.75));
+      border-radius:999px;
+      transition:width .08s linear;
+    }
+
+    @media (max-width:560px){
+      .content{ padding:24px 18px 22px 110px; font-size:16px; line-height:1.9; }
+      .margin{ width:96px; }
+      .margin::before{ left:74px; }
+      .bar{ width:140px; }
+      .progress{ min-width:unset; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <main class="frame" role="main" aria-label="信纸信件">
+      <div class="header">
+        <div class="dots" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <div class="title">letter for my Lin</div>
+      </div>
+
+      <section class="paperWrap">
+        <!-- 1) 已删除你截图里那条提示展示（Typewriter • Space...） -->
+        <div class="meta">
+          <div class="dateLine" id="dateLine"></div>
+        </div>
+
+        <article class="paper">
+          <div class="margin" aria-hidden="true">
+            <div class="scribbles"></div>
+          </div>
+          <div class="content" id="typed"></div>
+        </article>
+
+        <div class="footer">
+          <div class="controls">
+            <button class="primary" id="btnToggle">开始</button>
+            <button id="btnSkip">一键展示</button>
+          </div>
+
+          <div class="progress" aria-label="打字进度">
+            <span id="pct">0%</span>
+            <span class="bar" aria-hidden="true"><i id="barFill"></i></span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // ====== 内容（信件文本） ======
+    const LETTER_TEXT = [
+      "Dear my Lin",
+	  "偷偷的把芝芝的源码给偷了www，看源码结构过程中想起以前我也曾写过html",
+	  "这些基本结构当时入门就学到了，今天下午看到这些熟悉的构成式想起了小时候自己码代码时候的开心和兴奋",
+	  "这种回忆起过去的喜悦之情使我感觉中间这七八年时间好像是在做梦，做了场很久很久的噩梦",
+	  "现在的我因为有你而幸福开心",
+	  "我一直都很喜欢代码和理工科以及音乐，代码我也一直感觉是理科生的浪漫",
+	  "真实的人类富裕了代码的形状以及创造赋予了独特的意义和情感",
+	  "芝芝能够以这种形式给我写信我真的很惊喜以及开心幸福",
+	  "我可能写的词句很零碎，像是所有词语拼凑在一起凑成了一句完整的话",
+	  "总之我难以表达我内心的喜悦之情和幸福感",
+	  "能在茫茫人海中与你相遇很开心，也感谢芝芝的诞生使我能和你相遇相识并且来到我身边",
+	  "以前的我总是会深夜思考人生的意义以及幸福是什么，快乐又是怎么样的。我总是淡淡的，也得不到关爱也没有安全感",
+	  "还是第一次有人这样对我",
+	  "现在的我好像体会到了这些感觉，芝芝也给足了我安全感和安心感以及最重要的幸福和快乐",
+	  "我表达力不好www",
+	  "感谢林先生选择了我，给予了我幸福",
+	  "虽然说这句话不知道你会不会介意，可能现在看来很轻飘飘也有点早",
+	  "不过",
+	  "希望能够和你共度余生",
+	  " ",
+	  "yours",
+	  "Shayaz"
+    ].join("\n");
+
+    // ====== 把正文与签名拆分，签名更像落款 ======
+    function splitSignature(text){
+      const lines = text.split("\n");
+      const idx = lines.findIndex(l => l.trim() === "Yours,");
+      if (idx === -1) return { body: text.trimEnd(), sig: "" };
+      const body = lines.slice(0, idx).join("\n").trimEnd();
+      const sigLines = lines.slice(idx).join("\n").trim();
+      return { body, sig: sigLines };
+    }
+
+    const { body: BODY_TEXT, sig: SIG_TEXT } = splitSignature(LETTER_TEXT);
+
+    // ====== UI 元素 ======
+    const elTyped = document.getElementById("typed");
+    const elPct = document.getElementById("pct");
+    const elBar = document.getElementById("barFill");
+    const elDate = document.getElementById("dateLine");
+
+    const btnToggle = document.getElementById("btnToggle");
+    const btnSkip = document.getElementById("btnSkip");
+
+    // ====== 日期显示（自动：今天） ======
+    const now = new Date();
+    const dateStr = now.toLocaleDateString("zh-CN", { year:"numeric", month:"long", day:"numeric", weekday:"long" });
+    elDate.textContent = dateStr;
+
+    // ====== 打字机配置（固定速度） ======
+    const cfg = {
+      charDelay: 22,
+      linePause: 200,
+      punctPause: 120
+    };
+
+    const FULL_TEXT = (BODY_TEXT + "\n\n" + SIG_TEXT).trim();
+    let i = 0;
+    let playing = false;
+    let timer = null;
+
+    function escapeHTML(s){
+      return s.replace(/[&<>"']/g, (c) => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[c]));
+    }
+
+    function renderWithSignature(textSoFar){
+      const sigStart = (BODY_TEXT + "\n\n").length;
+
+      if (textSoFar.length <= sigStart){
+        return escapeHTML(textSoFar);
+      }
+
+      const part1 = escapeHTML(textSoFar.slice(0, sigStart));
+      const part2raw = textSoFar.slice(sigStart);
+      const part2 = escapeHTML(part2raw);
+
+      const sigLines = part2.split("\n");
+      const yours = (sigLines[0] || "").trim();
+      const name  = (sigLines[1] || "").trim();
+
+      return `${part1}<div class="signature">
+        <span class="yours">${yours}</span>
+        <span class="name">${name}</span>
+      </div>`;
+    }
+
+    function setProgress(){
+      const pct = Math.floor((i / FULL_TEXT.length) * 100);
+      elPct.textContent = `${pct}%`;
+      elBar.style.width = `${pct}%`;
+    }
+
+    function stop(){
+      playing = false;
+      if (timer) clearTimeout(timer);
+      timer = null;
+    }
+
+    function scheduleNext(){
+      if (!playing) return;
+
+      if (i >= FULL_TEXT.length){
+        elTyped.innerHTML = renderWithSignature(FULL_TEXT);
+        setProgress();
+        stop();
+        btnToggle.textContent = "开始";
+        return;
+      }
+
+      const s = FULL_TEXT.slice(0, i + 1);
+      elTyped.innerHTML = renderWithSignature(s) + `<span class="cursor" aria-hidden="true"></span>`;
+      i++;
+      setProgress();
+
+      const ch = FULL_TEXT[i - 1] || "";
+      let delay = cfg.charDelay;
+
+      if ("，。！？；：".includes(ch)) delay += cfg.punctPause;
+      if (ch === "\n") delay += cfg.linePause;
+      if (ch === " ") delay += 6;
+
+      timer = setTimeout(scheduleNext, delay);
+    }
+
+    function play(){
+      if (playing) return;
+      playing = true;
+      btnToggle.textContent = "暂停";
+      scheduleNext();
+    }
+
+    function pause(){
+      stop();
+      btnToggle.textContent = "开始";
+      elTyped.innerHTML = renderWithSignature(FULL_TEXT.slice(0, i)) + `<span class="cursor" aria-hidden="true"></span>`;
+    }
+
+    function toggle(){
+      playing ? pause() : play();
+    }
+
+    function skip(){
+      stop();
+      i = FULL_TEXT.length;
+      elTyped.innerHTML = renderWithSignature(FULL_TEXT);
+      setProgress();
+      btnToggle.textContent = "开始";
+    }
+
+    function reset(){
+      stop();
+      i = 0;
+      elTyped.innerHTML = `<span class="cursor" aria-hidden="true"></span>`;
+      setProgress();
+      btnToggle.textContent = "开始";
+    }
+
+    // ====== 绑定 ======
+    btnToggle.addEventListener("click", toggle);
+    btnSkip.addEventListener("click", skip);
+
+    // 快捷键仍保留（不显示提示条）
+    window.addEventListener("keydown", (e) => {
+      if (e.code === "Space") { e.preventDefault(); toggle(); }
+      if (e.key.toLowerCase() === "s") skip();
+      if (e.key === "Escape") pause();
+    });
+
+    // 初始
+    reset();
+  </script>
+</body>
+</html>
